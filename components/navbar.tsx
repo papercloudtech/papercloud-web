@@ -1,0 +1,147 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X, Github, Linkedin, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/theme-toggle";
+
+const navigationItems = [
+  { name: "Projects", href: "#projects" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
+];
+
+export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2">
+            <span className="text-xl font-bold tracking-tight">
+              Papercloudtech
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <div className="flex items-center space-x-2">
+              <ThemeToggle />
+              <Button variant="ghost" size="icon" asChild>
+                <a
+                  href="https://github.com/papercloudtech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <a
+                  href="https://linkedin.com/company/papercloudtech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button variant="ghost" size="icon" asChild>
+                <a
+                  href="https://twitter.com/papercloudtech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col space-y-6 pt-8">
+                  <Link
+                    href="/"
+                    className="text-xl font-bold tracking-tight"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Papercloudtech
+                  </Link>
+                  <div className="flex flex-col space-y-4">
+                    {navigationItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="text-lg font-medium text-muted-foreground transition-colors hover:text-foreground"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="flex items-center space-x-4 pt-6 border-t">
+                    <Button variant="ghost" size="icon" asChild>
+                      <a
+                        href="https://github.com/papercloudtech"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                      >
+                        <Github className="h-5 w-5" />
+                      </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                      <a
+                        href="https://linkedin.com/company/papercloudtech"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin className="h-5 w-5" />
+                      </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild>
+                      <a
+                        href="https://twitter.com/papercloudtech"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Twitter"
+                      >
+                        <Twitter className="h-5 w-5" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
