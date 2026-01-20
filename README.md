@@ -284,19 +284,29 @@ export const metadata: Metadata = {
 
 ## 🚢 Deployment
 
-### Deploy on Vercel (Recommended)
+### Deploy on GitHub Pages ⭐ (Configured & Ready!)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/papercloudtech/papercloud-web)
+This project is **pre-configured** for GitHub Pages deployment with zero configuration needed!
 
-1. Push your code to GitHub
-2. Import project to [Vercel](https://vercel.com)
-3. Vercel auto-detects Next.js and deploys
+**Quick Start:**
+1. Push code to GitHub
+2. Enable GitHub Pages in Settings → Pages → Source: "GitHub Actions"
+3. Site deploys automatically! 🚀
+
+📖 **Detailed Guide:** See [DEPLOYMENT.md](DEPLOYMENT.md) for complete instructions
+
+**Live in 2 minutes:**
+- ✅ All animations preserved
+- ✅ Dark mode works perfectly
+- ✅ Contact form functional
+- ✅ Free HTTPS included
+- ✅ Zero server costs
 
 ### Other Platforms
 
+- **Vercel**: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/papercloudtech/papercloud-web)
 - **Netlify**: [Guide](https://docs.netlify.com/integrations/frameworks/next-js/)
 - **AWS Amplify**: [Guide](https://docs.amplify.aws/guides/hosting/nextjs/q/platform/js/)
-- **Docker**: Build with `next build` and serve with `next start`
 
 ---
 
