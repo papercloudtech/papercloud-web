@@ -20,15 +20,13 @@ export const metadata: Metadata = {
   authors: [{ name: "Papercloudtech" }],
   creator: "Papercloudtech",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-icon.png",
+    icon: "/papercloud-web/favicon.ico",
+    shortcut: "/papercloud-web/favicon.ico",
+    apple: "/papercloud-web/apple-icon.png",
   },
-  metadataBase: new URL("https://papercloudtech.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://papercloudtech.com",
     title: "Papercloudtech - Open Source Innovation",
     description: "Building the future through open collaboration",
     siteName: "Papercloudtech",
