@@ -10,7 +10,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 const navigationItems = [
   { name: "Projects", href: "#projects" },
   { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {

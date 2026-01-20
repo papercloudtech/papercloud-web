@@ -1,12 +1,60 @@
-import { ArrowRight, Code2, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/navbar";
-import { ProjectCard } from "@/components/project-card";
 import { Footer } from "@/components/footer";
 import { projects } from "@/lib/data";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
+import PapercloudHero from "@/components/ui/papercloud-hero";
+
+export const metadata: Metadata = {
+  title: "Papercloudtech - Open Source Innovation Portfolio",
+  description: "Explore Papercloudtech's innovative open-source projects. Building the future through open collaboration with cutting-edge solutions in Node.js, Java, Python, and more.",
+  keywords: [
+    "open source",
+    "software development",
+    "innovation",
+    "collaboration",
+    "papercloudtech",
+    "SecureChat",
+    "E-Seva",
+    "Crop Yield AI",
+    "web development",
+    "portfolio",
+  ],
+  openGraph: {
+    title: "Papercloudtech - Open Source Innovation",
+    description: "Building the future through open collaboration",
+    type: "website",
+    url: "https://papercloudtech.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Papercloudtech - Open Source Innovation",
+    description: "Building the future through open collaboration",
+  },
+};
 
 export default function Home() {
   const featuredProjects = projects.filter((project) => project.featured);
+
+  // Transform projects data for HoverEffect component
+  const projectsForHover = projects.map((project) => ({
+    title: project.title,
+    description: project.description,
+    link: project.githubUrl,
+    tags: project.tags,
+    category: project.category,
+  }));
+
+  const featuredProjectsForHover = featuredProjects.map((project) => ({
+    title: project.title,
+    description: project.description,
+    link: project.githubUrl,
+    tags: project.tags,
+    category: project.category,
+  }));
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -14,47 +62,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden border-b bg-gradient-to-b from-background to-muted/20 py-20 md:py-32 lg:py-40">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-4xl text-center space-y-8">
-              <div className="inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium mb-4">
-                <Sparkles className="mr-2 h-4 w-4" />
-                Open Source Innovation
-              </div>
-              
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                Papercloudtech: Building the future through{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  open collaboration
-                </span>
-              </h1>
-              
-              <p className="mx-auto max-w-2xl text-lg text-muted-foreground md:text-xl leading-relaxed">
-                We create innovative, production-ready open-source solutions that
-                empower developers and organizations worldwide to build better software.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Button size="lg" className="gap-2 text-base" asChild>
-                  <a href="#projects">
-                    View Projects
-                    <ArrowRight className="h-5 w-5" />
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" className="gap-2 text-base" asChild>
-                  <a
-                    href="https://github.com/papercloudtech"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Code2 className="h-5 w-5" />
-                    Explore GitHub
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PapercloudHero />
 
         {/* Featured Projects Section */}
         <section id="projects" className="py-16 md:py-24 lg:py-32">
@@ -69,11 +77,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
+            <HoverEffect items={featuredProjectsForHover} />
           </div>
         </section>
 
@@ -90,11 +94,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
+            <HoverEffect items={projectsForHover} />
           </div>
         </section>
 
@@ -121,7 +121,7 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button size="lg" variant="outline" className="text-base" asChild>
-                  <a href="#contact">Get in Touch</a>
+                  <Link href="/contact">Get in Touch</Link>
                 </Button>
               </div>
             </div>
