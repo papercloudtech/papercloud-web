@@ -4,9 +4,8 @@ const nextConfig: NextConfig = {
   output: 'export',
   
   // GitHub Pages deployment configuration
-  // If deploying to https://username.github.io/repo-name, uncomment and set:
-  // basePath: '/repo-name',
-  // assetPrefix: '/repo-name',
+  basePath: '/papercloud-web',
+  assetPrefix: '/papercloud-web',
   
   images: {
     unoptimized: true, // Required for static export
