@@ -3,22 +3,20 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Sparkles } from "lucide-react";
 import Link from "next/link";
+import HeroAnimation from "@/components/hero-animation";
 
 export default function PapercloudHero() {
   return (
-    <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center">
-      {/* Decorative Borders - Using theme colors */}
-      <div className="absolute inset-y-0 left-0 h-full w-px bg-border">
-        <div className="absolute top-0 h-40 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
-      </div>
-      <div className="absolute inset-y-0 right-0 h-full w-px bg-border">
-        <div className="absolute h-40 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
-      </div>
-      <div className="absolute inset-x-0 bottom-0 h-px w-full bg-border">
-        <div className="absolute mx-auto h-px w-40 bg-gradient-to-r from-transparent via-primary to-transparent" />
-      </div>
+    <div className="relative">
+      {/* Decorative Borders - Extended to screen edges */}
+      <div className="absolute inset-y-0 left-0 h-full w-px bg-border" />
+      <div className="absolute inset-y-0 right-0 h-full w-px bg-border" />
+      <div className="absolute inset-x-0 bottom-0 h-px w-full bg-border" />
       
-      <div className="px-4 py-20 md:py-32 lg:py-40">
+      <div className="mx-auto max-w-7xl px-4 py-20 md:py-32 lg:py-40">
+        {/* Hero Animation */}
+        <HeroAnimation />
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
